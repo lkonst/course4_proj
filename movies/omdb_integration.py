@@ -52,7 +52,10 @@ def search_and_save(search):
   if not created and (search_term.last_search > now() - timedelta(days=1)):
     # Don't search as it has been searched recently
     logger.warning("Search for '%s' was performed in the past 24hours so not searching again.", normalized_search_term,)
-    return
+    return      #You can comment out the return inside the check, 
+                #which will allow us to repeatedly make the same search. 
+                #This is not necessary, but can make seeing the behavior easy 
+                #because you can repeat long searches.
   
   omdb_client = get_client_from_settings()
 
